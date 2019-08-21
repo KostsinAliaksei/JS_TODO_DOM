@@ -140,3 +140,13 @@ function add_task () {
     createCount_complete(); //====== Перерисовка счетчика выполненных задач
 
 }
+
+//==============Функция для автоматизации создания и рендеринга элементов страницы=======
+function createMyElement (type, props, children, target) {
+    //Параметры - 1: Тип (строка), 2: атрибуты (объект)
+    //            3: Дочерние элементы (массив объектов Element)
+    //            4: Целевой элемент, в который будет рендериться наш объект (id ввиде строки)
+    const element = new Element(type, props, children);
+    const elementComponent = new TodoComponent(element);
+    document.getElementById(target).appendChild(elementComponent.render());
+}
