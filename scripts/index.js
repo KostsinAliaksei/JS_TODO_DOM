@@ -150,3 +150,29 @@ function createMyElement (type, props, children, target) {
     const elementComponent = new TodoComponent(element);
     document.getElementById(target).appendChild(elementComponent.render());
 }
+
+//====================Главная функция=============================
+//================================================================
+//=================================================================
+
+window.onload = function() {
+
+    createCount(); //===== Перерисовка счетчика задач
+    createCount_complete();  //===== Перерисовка счетчика выполненных задач
+
+    // =======================Создаем инпут===============================
+    createMyElement('input', {type: 'text', id: 'input1', placeholder: 'Введите задачу...'}, '', 'input_field');
+
+    // =======================Создаем кнопку Добавить=======================
+    createMyElement('button', {id: 'addButton', onclick: add_task}, 'Добавить', 'input_field');
+
+    // =======================Создаем Список задач=======================
+    createMyElement('ul', {id: 'ul1', className: 'list'}, '', 'tasks');
+
+    // =======================Отлавливаем нажатие ENTER на поле ввода=======================
+    document.getElementById('input_field').addEventListener('keydown', function (e) {
+        if (e.keyCode === 13) {
+            add_task();
+        }
+    })
+};
