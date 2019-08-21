@@ -71,3 +71,15 @@ class TodoComponent extends Component{
         return element;
     }
 }
+
+//====================Выполнить задачу (пойдет как атрибут Чекбокса при нажатии)===================
+function complete_task() {
+    this.parentNode.classList.forEach(item => {  //==== По сути аналог toggleClass()  ====
+        if (item === 'completed') {
+            this.parentNode.classList.remove('completed');
+        } else {
+            this.parentNode.classList.add('completed');
+        }
+    });
+    createCount_complete();  //====== Перерисовка счетчика выполненных задач
+}
