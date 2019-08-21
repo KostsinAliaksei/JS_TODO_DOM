@@ -120,3 +120,23 @@ function del_task() {
     createCount(); //===== Перерисовка счетчика задач
     createCount_complete(); //====== Перерисовка счетчика выполненных задач
 }
+
+//==============CLICK-Функция добавления задачи===(пойдет как атрибут кнопки)=========
+function add_task () {
+    const id = Math.random();
+
+    const addItem = new Element('li', {className: 'task_item'}, [
+        new Element('input', {type: 'checkbox', className: 'checkbox', id: id.toString(), onclick: complete_task},''),
+        new Element('label', {htmlFor: id.toString()}, document.querySelector('#input1').value),
+        new Element('button', {className: 'del_button', onclick: del_task}, 'Удалить')
+    ]);
+
+    const addItemEl = new TodoComponent(addItem);
+    document.getElementById('ul1').appendChild(addItemEl.render());
+
+    document.getElementById('input1').value = ''; //==== Очистка поля после ввода задачи
+
+    createCount();  //===== Перерисовка счетчика задач
+    createCount_complete(); //====== Перерисовка счетчика выполненных задач
+
+}
