@@ -83,3 +83,34 @@ function complete_task() {
     });
     createCount_complete();  //====== Перерисовка счетчика выполненных задач
 }
+
+//====================СЧЕТЧИК ЗАДАЧ======================
+function count() {
+    return document.getElementsByClassName('task_item').length;  //===== Функция подсчета
+}
+function createCount() {  //=== Отрисовка результата подсчета
+
+    const foot = new Element('span', {id: 'div_count'}, `Количество задач - ${count()}`);
+    const foot_el = new TodoComponent(foot);
+    while (document.getElementById('count').firstChild) {  //====== Затираем старые данные
+        document.getElementById('count').removeChild(document.getElementById('count').firstChild)
+    }
+    document.getElementById('count').appendChild(foot_el.render());
+}
+//=============================================================
+
+//====================СЧЕТЧИК ВЫПОЛНЕННЫХ ЗАДАЧ======================
+function count_complete() {
+    return document.getElementsByClassName('completed').length;  //===== Функция подсчета
+}
+function createCount_complete() {  //=== Отрисовка результата подсчета
+
+    const foot = new Element('span', {id: 'div_count_complete'}, `Количество выполненных задач - ${count_complete()}`);
+    const foot_el = new TodoComponent(foot);
+    while (document.getElementById('count_complete').firstChild) {   //====== Затираем старые данные
+        document.getElementById('count_complete').removeChild(document.getElementById('count_complete').firstChild)
+    }
+    document.getElementById('count_complete').appendChild(foot_el.render());
+}
+//=============================================================
+
