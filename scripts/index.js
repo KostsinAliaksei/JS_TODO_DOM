@@ -12,7 +12,7 @@ class Element {
         //===Сортировка (атрибут / мусор)======
         let arr = {};
         for (let attr_el in props) {
-            if (attrFields.indexOf(attr_el) !== -1) {
+            if (attrFields.includes(attr_el)) {
                 arr[attr_el] = props[attr_el];
             } else {
                 this.props[attr_el] = props[attr_el];
