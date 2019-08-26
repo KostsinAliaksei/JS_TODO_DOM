@@ -124,12 +124,17 @@ function del_task() {
 //==============CLICK-Функция добавления задачи===(пойдет как атрибут кнопки)=========
 function add_task () {
     const id = Math.random();
+    let addItem = {};
 
-    const addItem = new Element('li', {className: 'task_item'}, [
-        new Element('input', {type: 'checkbox', className: 'checkbox', id: id.toString(), onclick: complete_task},''),
-        new Element('label', {htmlFor: id.toString()}, document.querySelector('#input1').value),
-        new Element('button', {className: 'del_button', onclick: del_task}, 'Удалить')
-    ]);
+    if (document.querySelector('#input1').value !== '') {
+        addItem = new Element('li', {className: 'task_item'}, [
+            new Element('input', {type: 'checkbox', className: 'checkbox', id: id.toString(), onclick: complete_task},''),
+            new Element('label', {htmlFor: id.toString()}, document.querySelector('#input1').value),
+            new Element('button', {className: 'del_button', onclick: del_task}, 'Удалить')
+        ]);
+    } else {
+        alert('Введите задачу!');
+    }
 
     const addItemEl = new TodoComponent(addItem);
     document.getElementById('ul1').appendChild(addItemEl.render());
